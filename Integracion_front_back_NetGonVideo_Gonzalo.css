@@ -1,0 +1,98 @@
+/*Estilos del formulario*/
+form{
+    padding: 60px;
+    max-width: 600px;
+    background-color: #453ea8;
+    color:white;
+    margin: 0 auto;
+  }
+
+form input{
+    margin-bottom: 15px;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; 
+    border: none;
+    color: #525c66; 
+    font-size: 1em;
+    resize: horizontal; 
+}
+
+fieldset {
+    font-family: sans-serif;
+    border: 5px solid #1D1677;
+    background: #8A84D3;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+fieldset legend {
+    background: #615ABA;
+    color: #fff;
+    padding: 5px 10px ;
+    font-size: 32px;
+    border-radius: 5px;
+    box-shadow: 0 0 0 5px #1D1677;
+    margin-left: 20px;
+}
+
+/* Estilo de los botones*/
+#crearPost,#consultaGet,#consultaList, #hiddenList, #limpiarFormulario {
+    display: inline-block;
+    background-color: #1D1677;
+    padding: 10px 45px 10px 45px;
+    border: 0;
+    border-radius: 20px;
+    font-size: 1em; 
+    color: 	white;
+    font-family: "Roboto", sans-serif;
+}
+#crearPost:hover,#consultaGet:hover,#consultaList:hover, #hiddenList:hover, #limpiarFormulario:hover{
+	background-color: #8A84D3;
+}
+
+/*Estilos del h1 y del párrafo*/
+h1{
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+}
+
+p{
+    font-family: "Roboto", sans-serif;
+}
+
+/*Estilo del input ID*/
+#id {
+    width: 125px;
+    height: 35px;
+}
+
+/*Estilo de la tabla */
+#tabla{
+    border-collapse: collapse;
+}
+
+th,tr,td{
+    border: 1px solid #1D1677;
+	width:120px;
+	height:45px;
+	vertical-align:middle;
+	text-align:center;
+}
+
+th{
+	color:#fff;
+	background-color: #2B229A;
+}
+
+/*Celda par*/
+tr:nth-child(even) td{
+	background-color:#615ABA;
+}
+
+/*Celda impar*/
+tr:nth-child(odd) td{
+	background-color:#8A84D3;
+}

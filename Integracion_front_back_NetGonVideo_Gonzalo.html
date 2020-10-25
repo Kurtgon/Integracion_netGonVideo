@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Integración Front y Back: Proyecto NetGonVideo</title>
+        <link rel="stylesheet" type="text/css" href="./Integracion_front_back_NetGonVideo_Gonzalo.css" media="screen">
+        <!-- Usar la api de fonts de google para elegir una fuente en concreto -->
+        <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Roboto">
+    </head>
+    <body>
+        <div id="body">
+            <div id="form">
+                <form id="formulario">
+                    <h1>NetGonVideo</h1>
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        <label>Name: <input id="name" type="text" name="name" placeholder="Name"></label>
+                        <label>Surnames: <input id="surnames" type="text" name="surnames" placeholder="Surnames"></label>
+                        <label>Birthdate: <input id="birthdate" type="text" name="birthdate" placeholder="Birthdate"></label>
+                        <label>DNI: <input id="dni" type="text" name="dni" placeholder="dni"></label>
+                    </fieldset>
+                    <br>
+                    <div id="botones">
+                        <p>Create customer:</p>
+                        <button id="crearPost">Create</button>
+                        <button id="limpiarFormulario">Clear Form</button>
+                        <br>
+                        <p>Consult a customer:</p>
+                        <input id="id" type="text" name="id" placeholder="Introduce el Id">
+                        <button id="consultaGet">See</button>
+                        <br>
+                        <p>List all customers:</p>
+                        <button id="consultaList" type="submit">List</button>
+                        <button id="hiddenList">Hide Table</button>
+                        <br>
+                        <br>
+                        <div id="tabla"></div>
+                    </div>
+                </form>
+            </div>    
+        </div>    
+        <script type="text/javascript" src="./Integracion_front_back_NetGonVideo_Gonzalo.js"></script>
+    </body>
+</html>
