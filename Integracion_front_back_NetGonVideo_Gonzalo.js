@@ -14,10 +14,12 @@ Deberá entregarse enlace a github donde se encuentre el proyecto completo (fron
 Moodle. El código debe tener sus correspondientes comentarios y un Readme en el que se explique las configuraciones
 necesarias a realizar para montar el proyecto completo. */
 
-//Nostraemos los botónes Post, Get y Lista
+//Nos traemos los botónes Post, Get, Lista, Put y Delete
 const buttonPost = document.getElementById("crearPost");
 const buttonGet = document.getElementById("consultaGet");
 const buttonList = document.getElementById("consultaList");
+const buttonPut = document.getElementById("actualizarPut");
+const buttonDelete = document.getElementById("delete");
 
 //Método GET
 //Creamos el evento del botón
@@ -93,7 +95,7 @@ buttonList.addEventListener('click', (e) => {
         //Controlamos que introduzca un valor en el campo id
         if(id == ""){
             //Indicamos una alerta para que sea visible al usuario
-            alert("Error, el campo id no puede estar vacío");
+            alert("Error!!!! El campo id no puede estar vacío");
         }else{
             fetch(`http://localhost:8080/api/customers/${id}`)
             .then(respuesta => respuesta.ok ? Promise.resolve(respuesta) : Promise.reject(respuesta))
@@ -108,7 +110,7 @@ buttonList.addEventListener('click', (e) => {
             })
             //Controlamos el id si no existe
             .catch(error =>{
-                alert(`Error, no existe ningún cliente con el id: ${id}`);
+                alert(`Error!!! No existe ningún cliente con el id: ${id}`);
                 //reseteamos el valor de id para que vuelva a introducir uno nuevo
                 document.getElementById("id").value="";
                 limpiarCampos();
@@ -146,9 +148,84 @@ buttonList.addEventListener('click', (e) => {
             limpiarCampos();
         })
         .catch(error => {
-            alert("Error no se ha podido añadir el cliente");
+            alert("Error!!!! No se ha podido añadir el cliente");
             limpiarCampos();
         })
+    })
+
+    //Método Put
+    //Creamos el evento del botón
+    buttonPut.addEventListener("click",(e)=> {
+        e.preventDefault();
+        //Recuperamos el valor dni
+        let dniActualizar = document.getElementById("dniActualizar").value;
+        //Compropbamos que el dni existe
+        if(dniActualizar==""){
+            alert("Error!!!! El dni no existe");
+        }else{
+            //Recuperamos el resto de valores del formulario
+            let name=document.getElementById("name").value;
+            let surnames = document.getElementById("surnames").value;
+            let birthDate = document.getElementById("birthdate").value;
+            //Comprobamos que si los campos están vacíos los ponga a null
+            if(name==""){
+                name=null;
+            }
+            if(surnames==""){
+                surnames=null;
+            }
+            if(birthDate==""){
+                birthDate=null;
+            }
+            //Enviar datos método Put usando el API Fetch
+            fetch('http://localhost:8080/api/customers', {
+                method: 'PUT',
+                body: JSON.stringify({
+                dni: dniActualizar,
+                name: name,
+                surnames:  surnames,
+                birthDate: birthDate
+                }),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+            //Lanzamos la promesa
+            .then(respuesta => respuesta.ok ? Promise.resolve(respuesta) : Promise.reject(respuesta))
+            .then(respuesta => {
+                alert("El cliente se ha modificado");
+                limpiarCampos();
+            })
+            .catch(error =>{
+                alert("Error!!! No se ha podido modificar el cliente");
+                limpiarCampos();
+            })
+        }
+   })
+   
+   //Método Delete
+   //Creamos el evento del botón eliminar
+   buttonDelete.addEventListener("click", (e) =>{
+       e.preventDefault();
+       //Recuperamos el valor del id
+       let idDelete = document.getElementById("idDelete").value;
+       //Comprobamos si existe ese id
+       if(idDelete==""){
+           alert("Error!!! El id está vacío, introduce un id");
+       }else{
+        fetch(`http://localhost:8080/api/customers/${idDelete}`, {
+            method: 'DELETE'
+        })
+        .then(respuesta => respuesta.ok ? Promise.resolve(respuesta) : Promise.reject(respuesta))
+        .then(respuesta => {
+            alert("El cliente se ha eliminado");
+            limpiarCampos();
+       })
+       .catch(error =>{
+            alert("Error!!!! No existe ese cliente");
+            limpiarCampos();
+            }) 
+         }
     })
 
     //Función para limpiar los campos del formulario
@@ -157,6 +234,8 @@ buttonList.addEventListener('click', (e) => {
         document.getElementById("surnames").value="";
         document.getElementById("birthdate").value="";
         document.getElementById("dni").value="";
+        document.getElementById("dniActualizar").value="";
+        document.getElementById("idDelete").value="";
     }
 
     //Función para eliminar la tabla

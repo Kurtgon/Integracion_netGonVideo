@@ -39,7 +39,7 @@ fieldset legend {
 }
 
 /* Estilo de los botones*/
-#crearPost,#consultaGet,#consultaList, #hiddenList, #limpiarFormulario {
+button {
     display: inline-block;
     background-color: #1D1677;
     padding: 10px 45px 10px 45px;
@@ -49,7 +49,7 @@ fieldset legend {
     color: 	white;
     font-family: "Roboto", sans-serif;
 }
-#crearPost:hover,#consultaGet:hover,#consultaList:hover, #hiddenList:hover, #limpiarFormulario:hover{
+button:hover{
 	background-color: #8A84D3;
 }
 
@@ -64,8 +64,8 @@ p{
 }
 
 /*Estilo del input ID*/
-#id {
-    width: 125px;
+#id,#dniActualizar,#idDelete {
+    width: 130px;
     height: 35px;
 }
 
